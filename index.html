@@ -4,29 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2475/2475496.png" type="image/png">
     <title>Evaluación de Preguntas - CDPRS</title>
 </head>
 <style>
 :root {
-    /* Colores refinados y una paleta más cohesiva */
-    --primary-color: #1A73E8;        /* Azul principal (Google-esque) */
-    --primary-dark: #165CB3;         /* Variación oscura del primario */
-    --secondary-color: #F0F4C3;      /* Amarillo suave (secundario) */
-    --accent-color: #E64A19;         /* Naranja acento (energético) */
-    --text-primary: #263238;        /* Gris oscuro (texto principal) */
-    --text-secondary: #546E7A;      /* Gris medio (texto secundario) */
-    --bg-light: #ECEFF1;           /* Gris muy claro (fondos ligeros) */
-    --bg-dark: #37474F;            /* Gris oscuro (fondos oscuros) */
-    --ui-border: #CFD8DC;           /* Gris claro (bordes UI) */
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra media */
-    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15); /* Sombra grande */
+    --primary-color: #1A73E8;
+    --primary-dark: #165CB3;
+    --secondary-color: #F0F4C3;
+    --accent-color: #E64A19;
+    --text-primary: #263238;
+    --text-secondary: #546E7A;
+    --bg-light: #ECEFF1;
+    --bg-dark: #37474F;
+    --ui-border: #CFD8DC;
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
     --transition-fast: all 0.2s ease-in-out;
     --transition-medium: all 0.4s ease-in-out;
-    --font-family: 'Roboto', sans-serif; /* Fuente moderna y legible */
-    --border-radius: 8px;           /* Bordes redondeados sutiles */
+    --font-family: 'Roboto', sans-serif;
+    --border-radius: 8px;
 }
 
-/* Resets y estilos base */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -34,8 +33,8 @@
 }
 
 html {
-    font-size: 16px; /* Base para rems */
-    scroll-behavior: smooth; /* Scroll suave */
+    font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -43,11 +42,11 @@ body {
     background-color: var(--bg-light);
     color: var(--text-primary);
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased; /* Mejor renderizado de fuente */
+    animation: fadeIn 0.5s ease-out backwards 0.2s;
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header - Diseño Heroico */
 header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     color: white;
@@ -67,7 +66,7 @@ header::before {
     right: 0;
     bottom: 0;
     left: 0;
-    background: url('hero-pattern.svg'); /* Patrón sutil de fondo */
+    background: url('hero-pattern.svg');
     background-size: cover;
     opacity: 0.1;
     mix-blend-mode: overlay;
@@ -88,7 +87,6 @@ header p {
     margin: 0 auto;
 }
 
-/* Main - Contenido Principal */
 main {
     max-width: 1200px;
     margin: 2rem auto;
@@ -98,7 +96,6 @@ main {
     border-radius: var(--border-radius);
 }
 
-/* Controles - Sección Interactiva */
 .controls {
     display: flex;
     align-items: center;
@@ -109,13 +106,14 @@ main {
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
     margin-bottom: 2rem;
     border: 1px solid var(--ui-border);
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .controls label {
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--text-secondary);
-    margin-right: 1rem;
 }
 
 .controls select {
@@ -138,7 +136,6 @@ main {
     box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
 }
 
-/* Placeholder */
 .placeholder-text {
     font-size: 1.25rem;
     font-style: italic;
@@ -148,15 +145,21 @@ main {
     opacity: 0.7;
 }
 
-/* Tabla - Presentación de Datos */
-table {
+/* --- NUEVO CONTENEDOR RESPONSIVO PARA TABLA --- */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--border-radius);
+    margin-top: 2rem;
+    box-shadow: var(--shadow-md);
+    background-color: white;
+}
+
+.table-responsive table {
+    min-width: 768px;
     width: 100%;
     border-collapse: collapse;
-    margin-top: 2rem;
-    background-color: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-md);
-    overflow: hidden;
 }
 
 th, td {
@@ -180,11 +183,10 @@ tr:nth-child(even) {
 }
 
 tr:hover {
-    background-color: #f0f6ff; /* Ligero azul al pasar el ratón */
+    background-color: #f0f6ff;
     transition: var(--transition-fast);
 }
 
-/* Footer - Información Adicional */
 footer {
     background-color: var(--bg-dark);
     color: rgba(255, 255, 255, 0.7);
@@ -210,7 +212,7 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Media Queries - Responsividad Avanzada */
+/* Media Queries */
 @media (max-width: 768px) {
     header {
         padding: 3rem 1.5rem;
@@ -223,20 +225,10 @@ footer a:hover {
     .controls {
         flex-direction: column;
         align-items: stretch;
-        gap: 1rem; /* Espacio entre elementos */
-    }
-
-    .controls label {
-        margin-right: 0;
-        text-align: left;
     }
 
     .controls select {
         width: 100%;
-    }
-
-    table {
-        overflow-x: auto; /* Scroll horizontal en tablas */
     }
 
     th, td {
@@ -263,30 +255,26 @@ footer a:hover {
         font-size: 0.9rem;
     }
 
-    /* Ocultar columnas menos importantes en tablas */
+    /* Oculta columnas menos relevantes */
     th:nth-child(1), td:nth-child(1),
     th:nth-child(3), td:nth-child(3) {
         display: none;
     }
 }
 
-/* Animaciones y Efectos */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-body {
-    animation: fadeIn 0.5s ease-out backwards 0.2s; /* Animación sutil al cargar */
-}
-
-/* Utilidades (Clases Reutilizables) */
+/* Utilidades */
 .text-center { text-align: center; }
 .mt-2 { margin-top: 2rem; }
 .mb-2 { margin-bottom: 2rem; }
 .py-1 { padding-top: 1rem; padding-bottom: 1rem; }
 .px-1 { padding-left: 1rem; padding-right: 1rem; }
 </style>
+
 <body>
     <header>
         <h1>Evaluación de Habilidades y Comportamientos - CDPRS</h1>
@@ -310,6 +298,9 @@ body {
 
         <div id="questions-container" class="questions-container">
             <p class="placeholder-text">Por favor, selecciona un grupo para ver las preguntas.</p>
+            <div class="table-responsive" id="table-wrapper">
+                <!-- Aquí JavaScript debe insertar la <table> -->
+            </div>
         </div>
     </main>
 
